@@ -1,0 +1,24 @@
+builder:
+  environment:
+    VERSION: '2.1.0'
+  build: .
+  command: |
+    bash -c "bash -s <<EOF
+    export DEBIAN_FRONTEND=noninteractive
+    wget -q wget http://packages.couchbase.com/releases/couchbase-release/couchbase-release-1.0-2-amd64.deb
+    dpkg -i /root/*.deb
+    apt-get update
+    apt-get install -y libcouchbase-dev libcouchbase2-bin
+    pecl download couchbase
+    tar -zxvf couchbase-$$VERSION.tgz
+    cd couchbase-$$VERSION
+    cp -r /src/* /root/couchbase-$$VERSION/.
+    phpize
+    ./configure
+    checkinstall -y --install=no --pkgname='php5-couchbase' --pkgversion='$$VERSION-aig' --pkggroup='php' --pkgsource='https://github.com/couchbase/php-ext-couchbase' --maintainer='Marcelo Almeida \<marcelo.almeida@africainternetgroup.com\>' --requires='php5-common \(\>= 5.6.0\)' --include=include_etc
+    mv /root/couchbase-$$VERSION/php5-couchbase_$$VERSION-aig-1_amd64.deb /pkg/
+    EOF"
+  volumes:
+    - ./src:/src
+    - ./pkg:/pkg
+  working_dir: /root

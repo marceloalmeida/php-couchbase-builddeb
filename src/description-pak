@@ -1,0 +1,4 @@
+Couchbase PHP Client
+
+This library allows you to connect to a Couchbase cluster from PHP.
+It is a native PHP extension and uses the very fast libcouchbase library to handle communicating to the cluster over the Couchbase binary protocol.
