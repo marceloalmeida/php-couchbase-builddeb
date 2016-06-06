@@ -21,7 +21,7 @@ COPY src /src
 
 # INSTALL PACKAGES DEPENDENCIES
 RUN mkdir /pkg
-RUN wget -q wget http://packages.couchbase.com/releases/couchbase-release/couchbase-release-1.0-2-amd64.deb ;\
+RUN wget -q http://packages.couchbase.com/releases/couchbase-release/couchbase-release-1.0-2-amd64.deb ;\
   dpkg -i /root/*.deb ;\
   apt-get update ;\
   apt-get install -y libcouchbase-dev libcouchbase2-bin
