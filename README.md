@@ -1,8 +1,8 @@
-# Buildtask for Couchbase driver for PHP5.6
+# Buildtask for Couchbase driver for PHP
 
-[![Build Status](https://travis-ci.org/marcelosousaalmeida/php5-couchbase-builddeb.svg?branch=master)](https://travis-ci.org/marcelosousaalmeida/php5-couchbase-builddeb)
+[![Build Status](https://travis-ci.org/marcelosousaalmeida/php-couchbase-builddeb.svg?branch=master)](https://travis-ci.org/marcelosousaalmeida/php-couchbase-builddeb)
 
-Task to build Debian packages of Couchbase driver for PHP 5.6.
+Task to build Debian packages of Couchbase driver for PHP.
 
 
 ## Dependencies
