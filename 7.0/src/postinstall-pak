@@ -1,0 +1,11 @@
+#!/bin/sh
+set -e
+# Automatically added by dh_php5
+if [ -x /usr/sbin/phpenmod ]; then
+    for conf in couchbase  ; do
+        /usr/sbin/phpenmod -v ALL -s ALL $conf
+    done
+else
+    echo "WARN: php7.0-common it's not installed, you need to enable yourself."
+fi
+# End automatically added section

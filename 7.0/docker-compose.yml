@@ -1,0 +1,8 @@
+builder:
+  build: .
+  command: |
+    bash -c "bash -s <<EOF
+    cp /root/couchbase-*/*.deb /pkg/.
+    EOF"
+  volumes:
+    - ./pkg:/pkg
