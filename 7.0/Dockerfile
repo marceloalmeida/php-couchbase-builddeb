@@ -36,6 +36,6 @@ RUN wget -q https://pecl.php.net/get/couchbase-$VERSION.tgz ;\ ;\
   cp -r /src/* /root/couchbase-$VERSION/. ;\
   phpize ;\
   ./configure ;\
-  checkinstall -y --install=no --pkgname='php7.0-couchbase' --pkgversion='$VERSION-aig' --pkggroup='php' --pkgsource='https://github.com/couchbase/php-ext-couchbase' --maintainer='Marcelo Almeida \<marcelo.almeida@jumia.com\>' --requires='php7.0-common \(\>= 7.0.7\), libcouchbase2-core \(\>= 2.6.0\)' --include=include_etc
+  checkinstall -y --install=no --pkgname='php7.0-couchbase' --pkgversion='$VERSION-aig' --pkggroup='php' --pkgsource='https://github.com/couchbase/php-ext-couchbase' --maintainer='Marcelo Almeida \<marcelo.almeida@jumia.com\>' --requires='php7.0-common \(\>= 7.0.7\), php7.0-json \(\>= 7.0.7\), libcouchbase2-core \(\>= 2.6.0\)' --include=include_etc
 
 VOLUME ["/pkg"]
