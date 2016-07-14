@@ -5,7 +5,6 @@ MAINTAINER Marcelo Almeida <marcelo.almeida@jumia.com>
 WORKDIR "/root"
 
 ENV DEBIAN_FRONTEND noninteractive
-ENV VERSION 2.2.0beta3
 
 # INSTALL BUILDER DEPENDENCIES
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -28,6 +27,8 @@ RUN wget -q http://packages.couchbase.com/releases/couchbase-release/couchbase-r
   dpkg -i /root/*.deb ;\
   apt-get update ;\
   apt-get install -y libcouchbase-dev libcouchbase2-bin
+
+ENV VERSION 2.2.0beta4
 
 # CREATE PACKAGE
 RUN wget -q https://pecl.php.net/get/couchbase-$VERSION.tgz ;\ ;\
