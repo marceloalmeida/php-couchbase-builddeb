@@ -33,6 +33,6 @@ RUN pecl download couchbase-$VERSION ;\
   cp -r /src/* /root/couchbase-$VERSION/. ;\
   phpize ;\
   ./configure ;\
-  checkinstall -y --install=no --pkgname='php5-couchbase' --pkgversion='$VERSION-aig' --pkggroup='php' --pkgsource='https://github.com/couchbase/php-ext-couchbase' --maintainer='Marcelo Almeida \<marcelo.almeida@africainternetgroup.com\>' --requires='php5-common \(\>= 5.6.0\), libcouchbase2-core \(\>= 2.6.0\)' --include=include_etc
+  checkinstall -y --install=no --pkgname='php5-couchbase' --pkgversion='$VERSION-aig' --pkggroup='php' --pkgsource='https://github.com/couchbase/php-ext-couchbase' --maintainer='Marcelo Almeida \<marcelo.almeida@jumia.com\>' --requires='php5-common \(\>= 5.6.0\), libcouchbase2-core \(\>= 2.6.0\)' --include=include_etc
 
 VOLUME ["/pkg"]
