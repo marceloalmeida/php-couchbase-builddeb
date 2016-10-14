@@ -28,7 +28,7 @@ RUN wget -q http://packages.couchbase.com/releases/couchbase-release/couchbase-r
   apt-get update ;\
   apt-get install -y libcouchbase-dev libcouchbase2-bin
 
-ENV VERSION 2.2.0beta4
+ENV VERSION 2.2.3
 
 # CREATE PACKAGE
 RUN wget -q https://pecl.php.net/get/couchbase-$VERSION.tgz ;\ ;\

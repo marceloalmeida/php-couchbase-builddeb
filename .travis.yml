@@ -16,8 +16,16 @@ before_script:
 script:
   - docker build -t "$image" .
   - ~/official-images/test/run.sh "$image"
+  - docker run -it --rm -v $(pwd)/pkg:/pkg $image bash -c "cp /root/couchbase-*/*.deb /pkg; chmod 777 /pkg -R"
+  - deb_package=$(ls $(pwd)/pkg)
+  - ls -lh $(pwd)/pkg/${deb_package}
 
-after_script:
-  - docker images
+deploy:
+  provider: releases
+  api_key: "${GH_TOKEN}"
+  file: "$(pwd)/pkg/${deb_package}"
+  skip_cleanup: true
+  on:
+    tags: true
 
 # vim:set et ts=2 sw=2:

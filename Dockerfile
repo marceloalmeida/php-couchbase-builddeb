@@ -26,7 +26,7 @@ RUN wget -q http://packages.couchbase.com/releases/couchbase-release/couchbase-r
   apt-get install -y libcouchbase-dev libcouchbase2-bin
 
 # CREATE PACKAGE
-ENV VERSION 2.2.0
+ENV VERSION 2.2.3
 RUN pecl download couchbase-$VERSION ;\
   tar -zxvf couchbase-$VERSION.tgz ;\
   cd couchbase-$VERSION ;\
