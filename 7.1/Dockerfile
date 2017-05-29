@@ -1,4 +1,4 @@
-FROM marceloalmeida/php-docker:7.0
+FROM marceloalmeida/php-docker:7.1
 
 MAINTAINER Marcelo Almeida <marcelo.almeida@jumia.com>
 
@@ -14,7 +14,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   checkinstall \
   lsb-release \
   make \
-  php7.0-dev \
+  php7.1-dev \
   re2c \
   runawk \
   wget
@@ -37,6 +37,6 @@ RUN wget -q https://pecl.php.net/get/couchbase-$VERSION.tgz ;\ ;\
   cp -r /src/* /root/couchbase-$VERSION/. ;\
   phpize ;\
   ./configure ;\
-  checkinstall -y --install=no --pkgname='php7.0-couchbase' --pkgversion='$VERSION' --pkggroup='php' --pkgsource='https://github.com/couchbase/php-couchbase' --maintainer='Marcelo Almeida \<marcelo.almeida@jumia.com\>' --requires='php7.0-common \(\>= 7.0.7\), php7.0-json \(\>= 7.0.7\), libcouchbase2-core \(\>= 2.7.5\)' --include=include_etc
+  checkinstall -y --install=no --pkgname='php7.1-couchbase' --pkgversion='$VERSION' --pkggroup='php' --pkgsource='https://github.com/couchbase/php-couchbase' --maintainer='Marcelo Almeida \<marcelo.almeida@jumia.com\>' --requires='php7.1-common \(\>= 7.1.5\), php7.1-json \(\>= 7.1.5\), libcouchbase2-core \(\>= 2.7.5\)' --include=include_etc
 
 VOLUME ["/pkg"]

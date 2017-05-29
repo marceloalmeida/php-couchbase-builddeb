@@ -1,0 +1,13 @@
+#!/bin/sh
+set -e
+# Automatically added by dh_php5
+if [ "$1" = "purge" ] ; then
+	if [ -x /usr/sbin/phpdismod ]; then
+	    for conf in couchbase  ; do
+	        /usr/sbin/phpdismod -v ALL -s ALL $conf
+	    done
+	else
+	    echo "WARN: php7.1-common has been removed, you need to cleanup /etc/php yourself."
+	fi
+fi
+# End automatically added section
