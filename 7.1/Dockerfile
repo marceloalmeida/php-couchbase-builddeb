@@ -15,6 +15,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   lsb-release \
   make \
   php7.1-dev \
+  php-igbinary \
   re2c \
   runawk \
   wget
@@ -37,6 +38,6 @@ RUN wget -q https://pecl.php.net/get/couchbase-$VERSION.tgz ;\ ;\
   cp -r /src/* /root/couchbase-$VERSION/. ;\
   phpize ;\
   ./configure ;\
-  checkinstall -y --install=no --pkgname='php7.1-couchbase' --pkgversion='$VERSION' --pkggroup='php' --pkgsource='https://github.com/couchbase/php-couchbase' --maintainer='Marcelo Almeida \<marcelo.almeida@jumia.com\>' --requires='php7.1-common \(\>= 7.1.5\), php7.1-json \(\>= 7.1.5\), libcouchbase2-core \(\>= 2.7.5\)' --include=include_etc
+  checkinstall -y --install=no --pkgname='php7.1-couchbase' --pkgversion='$VERSION' --pkggroup='php' --pkgsource='https://github.com/couchbase/php-couchbase' --maintainer='Marcelo Almeida \<marcelo.almeida@jumia.com\>' --requires='php7.1-common \(\>= 7.1.5\), php7.1-json \(\>= 7.1.5\), php-igbinary \(\>= 2.0.1\), libcouchbase2-core \(\>= 2.7.5\)' --include=include_etc
 
 VOLUME ["/pkg"]
