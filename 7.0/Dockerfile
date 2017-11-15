@@ -4,7 +4,9 @@ MAINTAINER Marcelo Almeida <marcelo.almeida@jumia.com>
 
 WORKDIR "/root"
 
-ENV DEBIAN_FRONTEND noninteractive
+ENV \
+  DEBIAN_FRONTEND="noninteractive" \
+  VERSION="2.4.2"
 
 # INSTALL BUILDER DEPENDENCIES
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -15,6 +17,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   lsb-release \
   make \
   php7.0-dev \
+  php7.0-igbinary \
   re2c \
   runawk \
   wget
@@ -22,21 +25,19 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 COPY src /src
 
 # INSTALL PACKAGES DEPENDENCIES
-RUN mkdir /pkg
-RUN wget -q http://packages.couchbase.com/releases/couchbase-release/couchbase-release-1.0-3-amd64.deb ;\
-  dpkg -i /root/*.deb ;\
-  apt-get update ;\
-  apt-get install -y libcouchbase-dev libcouchbase2-bin
-
-ENV VERSION 2.3.2
+RUN mkdir /pkg && \
+  wget -q http://packages.couchbase.com/releases/couchbase-release/couchbase-release-1.0-3-amd64.deb && \
+  dpkg -i /root/*.deb && \
+  apt-get update && \
+  apt-get install -y libcouchbase-dev libcouchbase2-bin build-essential php-dev zlib1g-dev
 
 # CREATE PACKAGE
-RUN wget -q https://pecl.php.net/get/couchbase-$VERSION.tgz ;\ ;\
-  tar -zxvf couchbase-$VERSION.tgz ;\
-  cd couchbase-$VERSION ;\
-  cp -r /src/* /root/couchbase-$VERSION/. ;\
-  phpize ;\
-  ./configure ;\
-  checkinstall -y --install=no --pkgname='php7.0-couchbase' --pkgversion='$VERSION' --pkggroup='php' --pkgsource='https://github.com/couchbase/php-couchbase' --maintainer='Marcelo Almeida \<marcelo.almeida@jumia.com\>' --requires='php7.0-common \(\>= 7.0.7\), php7.0-json \(\>= 7.0.7\), libcouchbase2-core \(\>= 2.7.5\)' --include=include_etc
+RUN wget -q https://pecl.php.net/get/couchbase-$VERSION.tgz && \
+  tar -zxvf couchbase-$VERSION.tgz && \
+  cd couchbase-$VERSION && \
+  cp -r /src/* /root/couchbase-$VERSION/. && \
+  phpize && \
+  ./configure && \
+  checkinstall -y --install=no --pkgname='php7.0-couchbase' --pkgversion='$VERSION' --pkggroup='php' --pkgsource='https://github.com/couchbase/php-couchbase' --maintainer='Marcelo Almeida \<marcelo.almeida@jumia.com\>' --requires='php7.0-common \(\>= 7.0.7\), php7.0-json \(\>= 7.0.7\), php7.0-igbinary \(\>= 1.2.1\), libcouchbase2-core \(\>= 2.8.2\)' --include=include_etc
 
 VOLUME ["/pkg"]
